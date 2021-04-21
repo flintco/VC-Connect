@@ -12,6 +12,17 @@ class App extends React.Component{
     };
   }
 
+  postCall(){
+    const postOptions = {
+      method: 'post',
+      headers: {'Content-Type':'application/json'},
+      body: {
+          title: "Hello"
+      }
+    };
+    fetch("http://localhost:9000/", postOptions)
+  }
+
   callAPI1(){
     fetch("http://localhost:9000/testAPI")
       .then(res => res.text())
@@ -25,6 +36,7 @@ class App extends React.Component{
   }
 
   componentWillMount(){
+    this.postCall();
     this.callAPI1();
     this.callAPI2();
   }
