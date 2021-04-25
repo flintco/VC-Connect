@@ -1,9 +1,9 @@
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'me',
-  password : 'secret',
-  database : 'my_db'
+  user     : 'root',
+  password : 'password',
+  database : 'schema_test'
 });
  
 connection.connect();
@@ -14,20 +14,3 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
 });
  
 connection.end();
-
-/*console.log("Got here");
-
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Pat$areBest1"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Database is connected!");
-});
-
-module.exports = con;*/
