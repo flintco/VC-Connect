@@ -1,8 +1,9 @@
+//Type command "node database.js" to start database
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'pswrd',
+  password : 'password',
   database : 'schema_test'
 });
  
