@@ -8,8 +8,11 @@ class App extends React.Component{
     super(props);
     this.state = {
       apiResponse1: "",
-      apiResponse2: ""
+      apiResponse2: "This is placeholder text"
     };
+
+    //This binding is needed for this to work in callback
+    this.callAPI2 = this.callAPI2.bind(this);
   }
 
   postCall(){
@@ -29,6 +32,7 @@ class App extends React.Component{
       .then(res => this.setState({apiResponse1: res}));
   }
 
+  
   callAPI2(){
     fetch("http://localhost:9000/users")
       .then(res => res.text())
@@ -38,7 +42,7 @@ class App extends React.Component{
   componentWillMount(){
     this.postCall();
     this.callAPI1();
-    this.callAPI2();
+    //this.callAPI2();
   }
 
   render(){
@@ -49,6 +53,7 @@ class App extends React.Component{
         </header>
         <p>{this.state.apiResponse1}</p>
         <p>{this.state.apiResponse2}</p>
+        <button onClick={this.callAPI2}>Click here to send API call</button>
       </div>
     );
   }
