@@ -7,13 +7,18 @@ let config = require('../config.js');
 router.post('/', function (req, res) {
     //res.send('POST request for new card')
 
-    let connection = mysql.createConnection(config);
+    const text = req.body
+    console.log('This is ' + text)
+    //console.log(req)
+    res.set('Content-Type', 'text/plain')
+    res.send('This is ' + text)
+    /*let connection = mysql.createConnection(config);
 
-    var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (0, 'New item', 'This is the answer')";
+    var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (5, 'New item #2', 'This is the answer #2')";
     connection.query(sql, function (err, result) {
     if (err) throw err;
         res.send('Question Successfully added');
-    });
+    });*/
 })
 
 module.exports = router;

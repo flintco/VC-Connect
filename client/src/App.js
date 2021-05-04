@@ -13,17 +13,23 @@ class App extends React.Component{
 
     //This binding is needed for this to work in callback
     this.callAPI2 = this.callAPI2.bind(this);
+    this.postCall = this.postCall.bind(this);
   }
 
+  
+
   postCall(){
+    const text = "hello";
+    const data = { text };
     const postOptions = {
-      method: 'post',
+      method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: {
-          title: "Hello"
-      }
+      body: JSON.stringify(data)
     };
-    fetch("http://localhost:9000/", postOptions)
+
+    fetch("http://localhost:9000/newCard", postOptions)
+    .then(res => {console.log(res)})
+    //.then(res => this.setState({apiResponse2: res}));
   }
 
   callAPI1(){
@@ -53,7 +59,7 @@ class App extends React.Component{
         </header>
         <p>{this.state.apiResponse1}</p>
         <p>{this.state.apiResponse2}</p>
-        <button onClick={this.callAPI2}>Click here to send API call</button>
+        <button onClick={this.postCall}>Click here to send API call</button>
       </div>
     );
   }

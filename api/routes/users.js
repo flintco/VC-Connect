@@ -5,7 +5,7 @@ let config = require('../config.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  let connection = mysql.createConnection(config);
+  /*let connection = mysql.createConnection(config);
 
   console.log("Got here");
 
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   connection.query(sql, function (err, result) {
   if (err) throw err;
   res.send('API Response 2 successful');
-  });
+  }); */
 });
 
 module.exports = router;
