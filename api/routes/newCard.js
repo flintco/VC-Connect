@@ -5,13 +5,16 @@ let config = require('../config.js');
 
 // POST method route to add new card to database
 router.post('/', function (req, res) {
-    //res.send('POST request for new card')
+    
+    //Recieves req and parses JSON
+    var text = JSON.stringify(req.body.name)
+    text = JSON.parse(text)
 
-    const text = req.body
     console.log('This is ' + text)
     //console.log(req)
     res.set('Content-Type', 'text/plain')
     res.send('This is ' + text)
+
     /*let connection = mysql.createConnection(config);
 
     var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (5, 'New item #2', 'This is the answer #2')";
