@@ -8,20 +8,20 @@ router.post('/', function (req, res) {
     
     //Recieves req and parses JSON
     var text = JSON.stringify(req.body.name)
-    text = JSON.parse(text)
+    //text = JSON.parse(text)
 
     console.log('This is ' + text)
     //console.log(req)
     res.set('Content-Type', 'text/plain')
-    res.send('This is ' + text)
+    //res.send('This is ' + text)
 
-    /*let connection = mysql.createConnection(config);
+    let connection = mysql.createConnection(config);
 
-    var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (5, 'New item #2', 'This is the answer #2')";
+    var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (9, " + text + ", 'This is the answer #2')";
     connection.query(sql, function (err, result) {
     if (err) throw err;
         res.send('Question Successfully added');
-    });*/
+    });
 })
 
 module.exports = router;
