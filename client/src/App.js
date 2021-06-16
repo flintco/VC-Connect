@@ -20,7 +20,7 @@ class App extends React.Component{
 
   postCall(){
     const text = "hello";
-    const data = { text };
+    const data = { name: "Mike" };
     const postOptions = {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
@@ -46,7 +46,7 @@ class App extends React.Component{
   }
 
   componentWillMount(){
-    this.postCall();
+    //this.postCall();
     this.callAPI1();
     //this.callAPI2();
   }

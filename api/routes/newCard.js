@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
 
     let connection = mysql.createConnection(config);
 
-    var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (9, " + text + ", 'This is the answer #2')";
+    var sql = "INSERT INTO table1 (COUNT, Question, Answer) VALUES (23, " + text + ", 'Another answer is here')";
     connection.query(sql, function (err, result) {
     if (err) throw err;
         res.send('Question Successfully added');
