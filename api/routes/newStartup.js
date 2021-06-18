@@ -22,7 +22,7 @@ router.post('/', function (req, res) {
     var sql = "INSERT INTO StartupTable (Name, Contact, Industry) VALUES (" + companyName + ", " + companyContact + ", " + companyIndustry + ")";
     connection.query(sql, function (err, result) {
     if (err) throw err;
-        res.send('Question Successfully added');
+        res.send('Startup Successfully added');
     });
 })
 

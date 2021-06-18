@@ -15,6 +15,7 @@ class App extends React.Component{
     };
 
     //This binding is needed for this to work in callback
+    this.callAPI1= this.callAPI1.bind(this);
     this.callAPI2 = this.callAPI2.bind(this);
     this.postCall = this.postCall.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -24,7 +25,6 @@ class App extends React.Component{
   }
 
   postCall(){
-    const text = "hello";
     const data = { 
       name: this.state.companyName,
       contact: this.state.companyContact,
@@ -42,9 +42,10 @@ class App extends React.Component{
   }
 
   callAPI1(){
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:9000/findStartup")
       .then(res => res.text())
-      .then(res => this.setState({apiResponse1: res}));
+      .then(res => this.setState({apiResponse2: res}));
+      //.then()
   }
 
   
@@ -74,7 +75,7 @@ class App extends React.Component{
 
   componentWillMount(){
     //this.postCall();
-    this.callAPI1();
+    //this.callAPI1();
     //this.callAPI2();
   }
 
@@ -85,8 +86,8 @@ class App extends React.Component{
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <p>{this.state.apiResponse1}</p>
-        <p>{this.state.apiResponse2}</p>
-        <button onClick={this.postCall}>Click here to send API call</button>
+        
+        <h2>Add your company to the database</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
             Company Name:
@@ -102,6 +103,11 @@ class App extends React.Component{
           </label>
           <input type="submit" value="Submit"/>
         </form>
+
+        <h2>Search for companies in the database</h2>
+        <p>{this.state.apiResponse2}</p>
+        <button onClick={this.callAPI1}>Click here</button>
+
       </div>
     );
   }
