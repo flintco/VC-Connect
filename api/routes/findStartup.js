@@ -4,8 +4,9 @@ var mysql = require('mysql');
 let config = require('../config.js');
 
 router.get("/",function(req,res,next){
+    var industry = 'Fast Food';
     let connection = mysql.createConnection(config);
-    var sql = "SELECT * FROM schema_test.StartupTable WHERE Industry = 'Fast Food'";
+    var sql = "SELECT * FROM schema_test.StartupTable WHERE Industry = " + industry;
     connection.query(sql, function (err, result) {
     if (err) throw err;
         res.send(result);
