@@ -42,9 +42,10 @@ class App extends React.Component{
   }
 
   callAPI1(){
-    fetch("http://localhost:9000/findStartup")
+    fetch("http://localhost:9000/findStartup/Tech")
       .then(res => res.text())
-      .then(res => this.setState({apiResponse2: res}));
+      //.then(this.setState({apiResponse1: "Hello"}))
+      .then(res => this.setState({apiResponse1: res}));
       //.then()
   }
 
@@ -73,11 +74,7 @@ class App extends React.Component{
     event.preventDefault();
   }
 
-  componentWillMount(){
-    //this.postCall();
-    //this.callAPI1();
-    //this.callAPI2();
-  }
+  componentWillMount(){}
 
   render(){
     return (
@@ -85,7 +82,6 @@ class App extends React.Component{
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <p>{this.state.apiResponse1}</p>
         
         <h2>Add your company to the database</h2>
         <form onSubmit={this.handleSubmit}>
@@ -105,9 +101,10 @@ class App extends React.Component{
         </form>
 
         <h2>Search for companies in the database</h2>
-        <p>{this.state.apiResponse2}</p>
-        <button onClick={this.callAPI1}>Click here</button>
-
+        
+        <button onClick={this.callAPI1}>Search</button>
+        <p>{this.state.apiResponse1}</p>
+        <br></br>
       </div>
     );
   }
