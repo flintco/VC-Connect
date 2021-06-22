@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 //import { render } from '../../api/app';
@@ -7,17 +6,15 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      apiResponse1: "This is a placeholder",
-      apiResponse2: "This is placeholder text",
+      apiResponse1: "",
       companyName: "",
       companyContact: "",
-      companyIndustry: "",
+      companyIndustry: "Tech",
       companyType: "Tech"
     };
 
     //This binding is needed for this to work in callback
-    this.callAPI1= this.callAPI1.bind(this);
-    this.callAPI2 = this.callAPI2.bind(this);
+    this.getStartups = this.getStartups.bind(this);
     this.postCall = this.postCall.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleContactChange = this.handleContactChange.bind(this);
@@ -41,24 +38,14 @@ class App extends React.Component{
 
     fetch("http://localhost:9000/newStartup", postOptions)
     .then(res => {console.log(res)})
-    //.then(res => this.setState({apiResponse2: res}));
   }
 
- callAPI1(){
-   var industryParameter = this.state.companyType;
-    var callWithIndustry = "http://localhost:9000/findStartup/" + industryParameter;
-    console.log(callWithIndustry);
+ getStartups(){
+    var callWithIndustry = "http://localhost:9000/findStartup/" + this.state.companyType;
+    //console.log(callWithIndustry);
     fetch(callWithIndustry)
       .then(res => res.text())
-      //.then(this.setState({apiResponse1: "Hello"}))
       .then(res => this.setState({apiResponse1: res}));
-  }
-
-  
-  callAPI2(){
-    fetch("http://localhost:9000/users")
-      .then(res => res.text())
-      .then(res => this.setState({apiResponse2: res}));
   }
 
   handleNameChange(event) {
@@ -84,9 +71,8 @@ class App extends React.Component{
   }
 
   handleTypeSubmit(event){
-    this.callAPI1();
+    this.getStartups();
     event.preventDefault();
-    //alert("Your list of companies has been updated");
   }
 
   componentWillMount(){}
@@ -106,7 +92,11 @@ class App extends React.Component{
           </label>
           <label>
             Company Industry:
-            <input type="text" value={this.state.companyIndustry} onChange={this.handleIndustryChange}/>
+            <select value={this.state.companyIndustry} onChange={this.handleIndustryChange}>
+              <option value="Tech">Tech</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Food">Food</option>
+            </select>
           </label>
           <input type="submit" value="Submit"/>
         </form>
