@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var config = {
   host     : 'localhost',
   user     : 'root',
-  password : 'password',
+  password : 'Pat$areBest1',
   database : 'schema_test'
 };
 

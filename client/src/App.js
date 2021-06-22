@@ -7,11 +7,12 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      apiResponse1: "",
+      apiResponse1: "This is a placeholder",
       apiResponse2: "This is placeholder text",
       companyName: "",
       companyContact: "",
-      companyIndustry: ""
+      companyIndustry: "",
+      companyType: "Tech"
     };
 
     //This binding is needed for this to work in callback
@@ -21,7 +22,9 @@ class App extends React.Component{
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleContactChange = this.handleContactChange.bind(this);
     this.handleIndustryChange = this.handleIndustryChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNewCompanySubmit = this.handleNewCompanySubmit.bind(this);
+    this.handleTypeChange = this.handleTypeChange.bind(this);
+    this.handleTypeSubmit = this.handleTypeSubmit.bind(this);
   }
 
   postCall(){
@@ -41,8 +44,12 @@ class App extends React.Component{
     //.then(res => this.setState({apiResponse2: res}));
   }
 
-  callAPI1(){
-    fetch("http://localhost:9000/findStartup/Tech")
+ callAPI1(){
+   var industryParameter = "Tech";
+    //this.setState({apiResponse1: "Hello"});
+    var callWithIndustry = "http://localhost:9000/findStartup/" + industryParameter;
+    console.log(callWithIndustry);
+    fetch(callWithIndustry)
       .then(res => res.text())
       //.then(this.setState({apiResponse1: "Hello"}))
       .then(res => this.setState({apiResponse1: res}));
@@ -68,10 +75,20 @@ class App extends React.Component{
     this.setState({companyIndustry: event.target.value});
   }
 
-  handleSubmit(event) {
+  handleNewCompanySubmit(event) {
     alert('A name was submitted: ' + this.state.companyName + ', Contact: ' + this.state.companyContact + ', Industry: ' + this.state.companyIndustry);
     this.postCall();
     event.preventDefault();
+  }
+
+  handleTypeChange(event){
+    this.setState({companyType: event.target.value});
+  }
+
+  handleTypeSubmit(event){
+    event.preventDefault();
+    //this.callAPI1();
+    //alert("Your list of companies has been updated");
   }
 
   componentWillMount(){}
@@ -79,12 +96,8 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        
         <h2>Add your company to the database</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleNewCompanySubmit}>
           <label>
             Company Name:
             <input type="text" value={this.state.companyName} onChange={this.handleNameChange}/>
@@ -102,7 +115,19 @@ class App extends React.Component{
 
         <h2>Search for companies in the database</h2>
         
-        <button onClick={this.callAPI1}>Search</button>
+        <form onSubmit={this.handleTypeSubmit}>
+          <label>
+            Choose your company type
+            <select value={this.state.companyType} onChange={this.handleTypeChange}>
+              <option value="Tech">Tech</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Food">Food</option>
+            </select>
+          </label>
+          <input type="submit" value="Submit" />
+          <button onClick={this.callAPI1}>Submit API</button>
+        </form>
+
         <p>{this.state.apiResponse1}</p>
         <br></br>
       </div>
