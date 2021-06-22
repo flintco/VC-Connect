@@ -45,15 +45,13 @@ class App extends React.Component{
   }
 
  callAPI1(){
-   var industryParameter = "Tech";
-    //this.setState({apiResponse1: "Hello"});
+   var industryParameter = this.state.companyType;
     var callWithIndustry = "http://localhost:9000/findStartup/" + industryParameter;
     console.log(callWithIndustry);
     fetch(callWithIndustry)
       .then(res => res.text())
       //.then(this.setState({apiResponse1: "Hello"}))
       .then(res => this.setState({apiResponse1: res}));
-      //.then()
   }
 
   
@@ -86,8 +84,8 @@ class App extends React.Component{
   }
 
   handleTypeSubmit(event){
+    this.callAPI1();
     event.preventDefault();
-    //this.callAPI1();
     //alert("Your list of companies has been updated");
   }
 
@@ -125,7 +123,6 @@ class App extends React.Component{
             </select>
           </label>
           <input type="submit" value="Submit" />
-          <button onClick={this.callAPI1}>Submit API</button>
         </form>
 
         <p>{this.state.apiResponse1}</p>
