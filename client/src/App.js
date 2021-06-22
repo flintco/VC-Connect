@@ -61,8 +61,10 @@ class App extends React.Component{
   }
 
   handleNewCompanySubmit(event) {
-    alert('A name was submitted: ' + this.state.companyName + ', Contact: ' + this.state.companyContact + ', Industry: ' + this.state.companyIndustry);
     this.postCall();
+    this.setState({companyName: ""});
+    this.setState({companyContact: ""})
+    alert(this.state.companyName + ' has been added to the database.');
     event.preventDefault();
   }
 
