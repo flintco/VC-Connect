@@ -1,0 +1,42 @@
+[
+    {
+        "Name": "Jobble",
+        "Contact": "jobble@gmail.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "My Business",
+        "Contact": "jobble@gmail.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "Facebook",
+        "Contact": "facebook@yahoo.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "Apple",
+        "Contact": "tim@apple.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "New Era",
+        "Contact": "newera@yahoo.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "Snapchat",
+        "Contact": "me@snapchat.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "Canvas",
+        "Contact": "canvas.uk.com",
+        "Industry": "Tech"
+    },
+    {
+        "Name": "Peloton",
+        "Contact": "peloton@gmail.com",
+        "Industry": "Tech"
+    }
+]

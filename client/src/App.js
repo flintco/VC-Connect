@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 //import { render } from '../../api/app';
+import './testData.json';
 
 class App extends React.Component{
   constructor(props){
@@ -77,6 +78,8 @@ class App extends React.Component{
     event.preventDefault();
   }
 
+  mapFunc(){}
+
   componentWillMount(){}
 
   render(){
@@ -119,6 +122,7 @@ class App extends React.Component{
 
         <p>{this.state.apiResponse1}</p>
         <br></br>
+        <button onclick="mapFunc()">Map</button>
       </div>
     );
   }
