@@ -3,7 +3,9 @@ import React from 'react';
 //import { render } from '../../api/app';
 import './testData.json';
 import VC from './VC';
+import Startup from './Startups';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Nav from './Nav';
 
 class App extends React.Component{
   constructor(props){
@@ -88,6 +90,7 @@ class App extends React.Component{
     return (
       <Router>
       <div className="App">
+        <Nav />
         <Switch>
         <Route exact path='/'>
 
@@ -134,6 +137,10 @@ class App extends React.Component{
 
         <Route path='/vc'>
           <VC />
+        </Route>
+
+        <Route path='/startup'>
+          <Startup />
         </Route>
 
         </Switch>
