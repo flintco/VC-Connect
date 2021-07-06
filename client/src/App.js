@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react';
 //import { render } from '../../api/app';
 import './testData.json';
+import VC from './VC';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends React.Component{
   constructor(props){
@@ -84,8 +86,12 @@ class App extends React.Component{
 
   render(){
     return (
+      <Router>
       <div className="App">
-        <h2>Add your company to the database</h2>
+        <Switch>
+        <Route exact path='/'>
+
+          <h2>Add your company to the database</h2>
         <form onSubmit={this.handleNewCompanySubmit}>
           <label>
             Company Name:
@@ -123,7 +129,16 @@ class App extends React.Component{
         <p>{this.state.apiResponse1}</p>
         <br></br>
         <button onclick="mapFunc()">Map</button>
-      </div>
+      
+        </Route>
+
+        <Route path='/vc'>
+          <VC />
+        </Route>
+
+        </Switch>
+        </div>
+      </Router>
     );
   }
 }
